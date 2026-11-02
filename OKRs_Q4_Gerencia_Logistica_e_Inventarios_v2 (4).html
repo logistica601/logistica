@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Estratégico Q4 2026: OKRs Gerencia Logística e Inventarios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; }
+      .print-shadow-none { box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+  <!-- Encabezado Principal -->
+  <header class="bg-slate-950 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 text-xs font-black tracking-wider uppercase rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">LOGÍSTICA & INVENTARIOS</span>
+          <span class="text-xs text-slate-400">Reporte Directo: CDS + Compras + IT • Cierre Zafra Q4 2026</span>
+        </div>
+        <h1 class="text-2xl font-black tracking-tight text-white mt-1">Canvas de Ejecución OKRs — Gerencia Logística (v2)</h1>
+      </div>
+
+      <!-- Barra de herramientas superior -->
+      <div class="flex items-center gap-3 no-print">
+        <div class="bg-slate-900 border border-slate-800 p-1 rounded-xl flex text-xs font-semibold">
+          <button id="btn-view-canvas" onclick="setViewMode('canvas')" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white transition shadow-sm">Canvas Táctico</button>
+          <button id="btn-view-tracker" onclick="setViewMode('tracker')" class="px-3.5 py-1.5 rounded-lg text-slate-300 hover:text-white transition">Simulador Q4</button>
+          <button id="btn-view-matrix" onclick="setViewMode('matrix')" class="px-3.5 py-1.5 rounded-lg text-slate-300 hover:text-white transition">Matriz Operativa</button>
+        </div>
+
+        <button onclick="window.print()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+          </svg>
+          Exportar
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-8 flex-1">
+
+    <!-- Tarjetas de Resumen Ejecutivo de Métricas Clave -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Fiabilidad de Stock</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          </div>
+          <p class="text-2xl font-black text-slate-900 mt-2">100% ERI</p>
+          <p class="text-xs text-slate-500 mt-1">Exactitud de inventario en almacenes, talleres y 8 tiendas de la red.</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Innegociable</span>
+          <span class="text-slate-500 font-bold">OKR 1</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Hub, Tiempos & PT</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+          </div>
+          <p class="text-2xl font-black text-slate-900 mt-2">100% Picking</p>
+          <p class="text-xs text-slate-500 mt-1">Redistribución PT sincronizada con arribo internacional y toma de tiempos.</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Arribo & Tiempos</span>
+          <span class="text-slate-500 font-bold">OKR 2</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Expansión de Red</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+          </div>
+          <p class="text-2xl font-black text-slate-900 mt-2">Apertura Dic 2026</p>
+          <p class="text-xs text-slate-500 mt-1">100% stock recibido, clasificado y rotulado al 30 de Noviembre.</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">Meta: 30 Nov</span>
+          <span class="text-slate-500 font-bold">OKR 3</span>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Odoo & IA en Zafra</span>
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+          </div>
+          <p class="text-2xl font-black text-slate-900 mt-2">95% IA Diaria</p>
+          <p class="text-xs text-slate-500 mt-1">Entradas con escaneo directo y optimización predictiva de rutas zafra.</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded">Odoo + IA</span>
+          <span class="text-slate-500 font-bold">OKR 4</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 1: CANVAS DE OKRs (4 COLUMNAS) -->
+    <div id="view-canvas" class="space-y-6">
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Alineación Estratégica en Cascada</span>
+          <h2 class="text-xl font-black text-slate-900">4 OKRs Tácticos • Gerencia de Logística e Inventarios</h2>
+        </div>
+        <div class="text-xs text-emerald-950 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200 self-start sm:self-auto font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          Q4 2026: Zafra de Fin de Año y Apertura Nueva Tienda en Diciembre 2026
+        </div>
+      </div>
+
+      <!-- Cuadrícula de 4 Columnas OKR -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+        <!-- ======================= OKR 1 ======================= -->
+        <article class="bg-white rounded-2xl border-2 border-emerald-200 hover:border-emerald-400 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-emerald-700 text-white tracking-wide">OKR 1</span>
+              <span class="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">Exactitud & Retornos</span>
+            </div>
+
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">
+                Blindar la Exactitud de Inventario (ERI) al 100% y estabilizar Logística Inversa
+              </h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Alineado al OKR 2 de Dirección: fiabilidad absoluta de existencias, control estricto de retornos y cero descuadres en temporada alta.
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="bg-slate-50 hover:bg-emerald-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black">1</span>
+                    Auditoría ERI
+                  </span>
+                  <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">100%</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Mantener ERI &ge; 99.8% con cuadre físico al 100% en tiendas y talleres al cierre de diciembre.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-emerald-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black">2</span>
+                    Logística Inversa
+                  </span>
+                  <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">&le; 24h</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Toma de tiempos y fijación de estándar &le; 24h de reingreso al hub para devoluciones y garantías.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-emerald-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black">3</span>
+                    Conteos Cíclicos
+                  </span>
+                  <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">&lt; 0.15%</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  100% conteos semanales ABC con discrepancia valorizada menor al 0.15% del inventario.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-bold text-slate-700">Meta: Diciembre 2026</span>
+            <span class="font-bold text-emerald-600">ERI Innegociable</span>
+          </div>
+        </article>
+
+        <!-- ======================= OKR 2 ======================= -->
+        <article class="bg-white rounded-2xl border-2 border-blue-200 hover:border-blue-400 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-blue-700 text-white tracking-wide">OKR 2</span>
+              <span class="text-[11px] font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded">Tiempos & Almacén</span>
+            </div>
+
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">
+                Estandarizar Tiempos de Despacho, Recepción en Tienda y Picking Cero Errores
+              </h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Alineado al OKR 2 de Dirección: optimizar los tiempos de ciclo, acelerar el hub y sincronizar la redistribución de PT con las importaciones.
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="bg-slate-50 hover:bg-blue-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-blue-100 text-blue-800 flex items-center justify-center text-[10px] font-black">1</span>
+                    Despacho Hub
+                  </span>
+                  <span class="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">-25% LT</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Toma de tiempos y reducción del ciclo de despacho en un 25% frente a línea base.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-blue-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-blue-100 text-blue-800 flex items-center justify-center text-[10px] font-black">2</span>
+                    Recepción Tiendas
+                  </span>
+                  <span class="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">&le; 90 min</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Estandarizar descarga y conteo ciego en las 8 tiendas para completar en menos de 90 minutos.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-blue-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-blue-100 text-blue-800 flex items-center justify-center text-[10px] font-black">3</span>
+                    Picking & Bodega PT
+                  </span>
+                  <span class="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">100% Sincronizado</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  100% precisión de picking y culminación de redistribución de bodega PT con el arribo del abastecimiento internacional.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-bold text-slate-700">Meta: Arribo Internacional</span>
+            <span class="font-bold text-blue-600">Picking Perfecto</span>
+          </div>
+        </article>
+
+        <!-- ======================= OKR 3 ======================= -->
+        <article class="bg-white rounded-2xl border-2 border-amber-200 hover:border-amber-400 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-amber-600 text-white tracking-wide">OKR 3</span>
+              <span class="text-[11px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded">Apertura Diciembre</span>
+            </div>
+
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">
+                Ejecutar la Logística y Abastecimiento para la Nueva Tienda (Diciembre 2026)
+              </h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Alineado al OKR 1 de Dirección: consolidar el resguardo, preparación y cubicaje del stock inicial para la apertura estelar de diciembre 2026.
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="bg-slate-50 hover:bg-amber-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-black">1</span>
+                    Stock Preparado
+                  </span>
+                  <span class="text-[10px] font-extrabold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">30 Nov</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  100% del stock de apertura recibido, clasificado y rotulado a más tardar el 30 de Noviembre 2026.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-amber-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-black">2</span>
+                    Cubicaje & Rutas
+                  </span>
+                  <span class="text-[10px] font-extrabold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">100%</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Asegurar 100% de capacidad de almacenaje y transporte sin alterar despachos regulares de la red.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-amber-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center text-[10px] font-black">3</span>
+                    Disponibilidad SKUs
+                  </span>
+                  <span class="text-[10px] font-extrabold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">0% Faltantes</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Garantizar 0% quiebres en lista maestra de SKUs clave para la inauguración de diciembre.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-bold text-slate-700">Meta: 30 Nov / Dic 2026</span>
+            <span class="font-bold text-amber-600">Apertura Diciembre</span>
+          </div>
+        </article>
+
+        <!-- ======================= OKR 4 ======================= -->
+        <article class="bg-white rounded-2xl border-2 border-cyan-200 hover:border-cyan-400 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 text-xs font-extrabold rounded-full bg-cyan-700 text-white tracking-wide">OKR 4</span>
+              <span class="text-[11px] font-bold text-cyan-800 bg-cyan-50 px-2 py-0.5 rounded">Odoo & IA Zafra</span>
+            </div>
+
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900 leading-snug">
+                Consolidar el Control en Odoo y Sincronizar Operaciones con IA
+              </h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                Alineado al OKR 3 de Dirección: trazabilidad total en Odoo con escaneo directo y optimización con IA en temporada zafra.
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="bg-slate-50 hover:bg-cyan-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-cyan-100 text-cyan-800 flex items-center justify-center text-[10px] font-black">1</span>
+                    Transacciones en Odoo
+                  </span>
+                  <span class="text-[10px] font-extrabold text-cyan-700 bg-cyan-100 px-1.5 py-0.5 rounded">100% Escaneo</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Registrar el 100% de entradas, traslados y devoluciones en Odoo; entradas y recepciones con escaneo directo.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-cyan-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-cyan-100 text-cyan-800 flex items-center justify-center text-[10px] font-black">2</span>
+                    IA en Rutas Zafra
+                  </span>
+                  <span class="text-[10px] font-extrabold text-cyan-700 bg-cyan-100 px-1.5 py-0.5 rounded">1 Modelo</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Implementar junto a TI modelo de IA para predicción y optimización de tiempos en recorridos y flujos de despacho en temporada zafra.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 hover:bg-cyan-50/50 p-3.5 rounded-xl border border-slate-200/80 transition">
+                <div class="flex items-start justify-between gap-1 mb-1">
+                  <span class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span class="w-4 h-4 rounded-md bg-cyan-100 text-cyan-800 flex items-center justify-center text-[10px] font-black">3</span>
+                    Inclusión de IA
+                  </span>
+                  <span class="text-[10px] font-extrabold text-cyan-700 bg-cyan-100 px-1.5 py-0.5 rounded">95% Uso</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-relaxed pl-5">
+                  Alcanzar 95% de inclusión de IA en procedimientos diarios en el equipo operativo de almacenes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-bold text-slate-700">Meta: Diciembre 2026</span>
+            <span class="font-bold text-cyan-700">Operación Inteligente</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- VISTA 2: SIMULADOR DE AVANCE Y PUNTUACIÓN -->
+    <div id="view-tracker" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Simulador de Medición Táctica</span>
+          <h2 class="text-xl font-black text-slate-900">Calculadora de Progreso & Calificación Q4</h2>
+          <p class="text-xs text-slate-500 mt-1">Monitorea el avance de tus 12 Resultados Clave actualizados para proyectar la evaluación ejecutiva (Escala 1 a 10).</p>
+        </div>
+        <div class="flex items-center gap-4 bg-slate-900 text-white p-3.5 rounded-xl border border-slate-800">
+          <div>
+            <span class="text-[11px] text-slate-400 block uppercase font-bold">Puntaje Gerencia</span>
+            <span id="score-global" class="text-2xl font-black text-emerald-400">0.0 <span class="text-sm font-semibold text-slate-400">/ 10</span></span>
+          </div>
+          <div class="h-9 w-px bg-slate-700"></div>
+          <div>
+            <span class="text-[11px] text-slate-400 block uppercase font-bold">Cumplimiento Global</span>
+            <span id="percent-global" class="text-2xl font-black text-indigo-300">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Columna Tracker 1 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <span class="text-xs font-black text-emerald-700 uppercase">OKR 1: ERI & Retornos</span>
+            <span id="score-p1" class="text-xs font-black text-slate-900">0.0 / 10</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 1: ERI 100% Auditoría</span>
+                <span id="val-p1-kr1" class="text-emerald-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p1-kr1" class="w-full accent-emerald-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 2: Tiempos Log. Inversa &le; 24h</span>
+                <span id="val-p1-kr2" class="text-emerald-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p1-kr2" class="w-full accent-emerald-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 3: Conteos ABC (Merma &lt;0.15%)</span>
+                <span id="val-p1-kr3" class="text-emerald-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p1-kr3" class="w-full accent-emerald-600 cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Tracker 2 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <span class="text-xs font-black text-blue-700 uppercase">OKR 2: Despacho, Picking & PT</span>
+            <span id="score-p2" class="text-xs font-black text-slate-900">0.0 / 10</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 1: -25% Lead Time Hub</span>
+                <span id="val-p2-kr1" class="text-blue-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p2-kr1" class="w-full accent-blue-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 2: Recepción Tiendas &le; 90m</span>
+                <span id="val-p2-kr2" class="text-blue-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p2-kr2" class="w-full accent-blue-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700 leading-tight">KR 3: Picking 100% y PT Arribo Int.</span>
+                <span id="val-p2-kr3" class="text-blue-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p2-kr3" class="w-full accent-blue-600 cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Tracker 3 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <span class="text-xs font-black text-amber-700 uppercase leading-tight">OKR 3: Tienda Dic 2026</span>
+            <span id="score-p3" class="text-xs font-black text-slate-900">0.0 / 10</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 1: 100% Stock al 30 Nov</span>
+                <span id="val-p3-kr1" class="text-amber-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p3-kr1" class="w-full accent-amber-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 2: Cubicaje & Rutas</span>
+                <span id="val-p3-kr2" class="text-amber-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p3-kr2" class="w-full accent-amber-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 3: 0% Faltantes SKUs Clave</span>
+                <span id="val-p3-kr3" class="text-amber-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p3-kr3" class="w-full accent-amber-600 cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Tracker 4 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+            <span class="text-xs font-black text-cyan-700 uppercase">OKR 4: Odoo & IA Zafra</span>
+            <span id="score-p4" class="text-xs font-black text-slate-900">0.0 / 10</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 1: 100% Entradas Escaneo Odoo</span>
+                <span id="val-p4-kr1" class="text-cyan-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p4-kr1" class="w-full accent-cyan-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 2: IA Recorridos & Despacho</span>
+                <span id="val-p4-kr2" class="text-cyan-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p4-kr2" class="w-full accent-cyan-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-[11px] font-semibold mb-1">
+                <span class="text-slate-700">KR 3: 95% Inclusión IA Almacén</span>
+                <span id="val-p4-kr3" class="text-cyan-600 font-bold">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" oninput="updateTracker()" id="slider-p4-kr3" class="w-full accent-cyan-600 cursor-pointer">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VISTA 3: MATRIZ OPERATIVA Y TIEMPOS DE CICLO -->
+    <div id="view-matrix" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="border-b border-slate-200 pb-3 mb-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Plan Operativo de Ejecución</span>
+          <h2 class="text-xl font-black text-slate-900">Matriz de Procesos, Mediciones y Límites de Control Actualizada</h2>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 font-extrabold border-b border-slate-200">
+                <th class="p-3 rounded-l-lg">Área / Proceso</th>
+                <th class="p-3">Hito de Inicio</th>
+                <th class="p-3">Hito de Cierre</th>
+                <th class="p-3">Métrica / KPI de Control</th>
+                <th class="p-3">Meta Operativa Q4</th>
+                <th class="p-3 rounded-r-lg">Alineación Gerencial</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-600">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-blue-700">Despacho Hub (Warehouse)</td>
+                <td class="p-3">Generación y liberación de picking</td>
+                <td class="p-3">Carga final y precinto del camión</td>
+                <td class="p-3 font-semibold">Lead Time de Despacho (Hub)</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">-25% vs Baseline</span></td>
+                <td class="p-3 text-[11px]">OKR 2 Dirección (Picking y almacén PT)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-blue-700">Recepción en Tiendas</td>
+                <td class="p-3">Apertura de unidad en sucursal</td>
+                <td class="p-3">Conteo ciego y alta en trastienda</td>
+                <td class="p-3 font-semibold">Tiempo Descarga y Registro</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">&le; 90 minutos</span></td>
+                <td class="p-3 text-[11px]">OKR 1 y 2 Dirección (Red comercial)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-blue-700">Bodega PT & Abastecimiento Int.</td>
+                <td class="p-3">Llegada contenedores internacionales</td>
+                <td class="p-3">Reorganización y slotting PT culminado</td>
+                <td class="p-3 font-semibold">% Picking sin error & Slotting PT</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">100% Precisión</span></td>
+                <td class="p-3 text-[11px]">OKR 1 y 2 Dirección (CBM + PT)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-emerald-700">Logística Inversa</td>
+                <td class="p-3">Recepción de retorno/garantía</td>
+                <td class="p-3">Inspección y disposición en Odoo</td>
+                <td class="p-3 font-semibold">Reverse Logistics Lead Time</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">&le; 24 horas</span></td>
+                <td class="p-3 text-[11px]">OKR 2 Dirección (Exactitud de stock)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-emerald-700">Control de Inventario (ERI)</td>
+                <td class="p-3">Apertura de conteo físico ABC</td>
+                <td class="p-3">Cierre y cuadre en Odoo</td>
+                <td class="p-3 font-semibold">% ERI & Merma Neta</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">100% / &lt;0.15%</span></td>
+                <td class="p-3 text-[11px]">OKR 2 Dirección (Auditoría 100%)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-amber-700">Apertura Nueva Tienda (Dic 2026)</td>
+                <td class="p-3">Arribo y clasificación de stock inicial</td>
+                <td class="p-3">Etiquetado y resguardo completo</td>
+                <td class="p-3 font-semibold">% Stock Preparado al 30 Nov</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-50 text-amber-700 font-bold border border-amber-200">100% al 30 Nov</span></td>
+                <td class="p-3 text-[11px]">OKR 1 Dirección (Apertura Red)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-cyan-700">Odoo (Entradas/Salidas)</td>
+                <td class="p-3">Llegada física de material o retorno</td>
+                <td class="p-3">Escaneo directo y confirmación Odoo</td>
+                <td class="p-3 font-semibold">% Transacciones por Escaneo</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">100% Digital</span></td>
+                <td class="p-3 text-[11px]">OKR 3 Dirección (Trazabilidad Odoo)</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-bold text-cyan-700">IA en Operaciones Zafra</td>
+                <td class="p-3">Generación de pedidos de alta zafra</td>
+                <td class="p-3">Ruta y despacho optimizado por IA</td>
+                <td class="p-3 font-semibold">% Inclusión IA en Procesos Almacén</td>
+                <td class="p-3"><span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">95% Inclusión</span></td>
+                <td class="p-3 text-[11px]">OKR 3 Dirección (Casos de Uso IA)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+      <div>
+        <p class="text-white font-bold text-sm">Gerencia de Logística e Inventarios — Tablero Táctico Q4 2026 (Versión 2)</p>
+        <p class="text-slate-400 mt-0.5">8 Tiendas activas + Apertura Diciembre 2026 (Stock al 30 Nov) • ERI 100% innegociable • Optimización IA para temporada de Zafra.</p>
+      </div>
+      <div class="text-right">
+        <span class="inline-block bg-slate-900 text-emerald-400 border border-slate-700 px-3 py-1.5 rounded-lg font-semibold">
+          Alineado con Gerencia CDS + Compras + IT
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setViewMode(mode) {
+      const viewCanvas = document.getElementById('view-canvas');
+      const viewTracker = document.getElementById('view-tracker');
+      const viewMatrix = document.getElementById('view-matrix');
+
+      const btnCanvas = document.getElementById('btn-view-canvas');
+      const btnTracker = document.getElementById('btn-view-tracker');
+      const btnMatrix = document.getElementById('btn-view-matrix');
+
+      const activeBtn = 'px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white transition shadow-sm';
+      const inactiveBtn = 'px-3.5 py-1.5 rounded-lg text-slate-300 hover:text-white transition';
+
+      btnCanvas.className = inactiveBtn;
+      btnTracker.className = inactiveBtn;
+      btnMatrix.className = inactiveBtn;
+
+      viewCanvas.classList.add('hidden');
+      viewTracker.classList.add('hidden');
+      viewMatrix.classList.add('hidden');
+
+      if (mode === 'canvas') {
+        viewCanvas.classList.remove('hidden');
+        btnCanvas.className = activeBtn;
+      } else if (mode === 'tracker') {
+        viewTracker.classList.remove('hidden');
+        btnTracker.className = activeBtn;
+      } else if (mode === 'matrix') {
+        viewMatrix.classList.remove('hidden');
+        btnMatrix.className = activeBtn;
+      }
+    }
+
+    function updateTracker() {
+      // Pilar 1
+      const p1k1 = parseInt(document.getElementById('slider-p1-kr1').value);
+      const p1k2 = parseInt(document.getElementById('slider-p1-kr2').value);
+      const p1k3 = parseInt(document.getElementById('slider-p1-kr3').value);
+
+      document.getElementById('val-p1-kr1').innerText = p1k1 + '%';
+      document.getElementById('val-p1-kr2').innerText = p1k2 + '%';
+      document.getElementById('val-p1-kr3').innerText = p1k3 + '%';
+
+      const avgP1 = (p1k1 + p1k2 + p1k3) / 3;
+      document.getElementById('score-p1').innerText = (avgP1 / 10).toFixed(1) + ' / 10';
+
+      // Pilar 2
+      const p2k1 = parseInt(document.getElementById('slider-p2-kr1').value);
+      const p2k2 = parseInt(document.getElementById('slider-p2-kr2').value);
+      const p2k3 = parseInt(document.getElementById('slider-p2-kr3').value);
+
+      document.getElementById('val-p2-kr1').innerText = p2k1 + '%';
+      document.getElementById('val-p2-kr2').innerText = p2k2 + '%';
+      document.getElementById('val-p2-kr3').innerText = p2k3 + '%';
+
+      const avgP2 = (p2k1 + p2k2 + p2k3) / 3;
+      document.getElementById('score-p2').innerText = (avgP2 / 10).toFixed(1) + ' / 10';
+
+      // Pilar 3
+      const p3k1 = parseInt(document.getElementById('slider-p3-kr1').value);
+      const p3k2 = parseInt(document.getElementById('slider-p3-kr2').value);
+      const p3k3 = parseInt(document.getElementById('slider-p3-kr3').value);
+
+      document.getElementById('val-p3-kr1').innerText = p3k1 + '%';
+      document.getElementById('val-p3-kr2').innerText = p3k2 + '%';
+      document.getElementById('val-p3-kr3').innerText = p3k3 + '%';
+
+      const avgP3 = (p3k1 + p3k2 + p3k3) / 3;
+      document.getElementById('score-p3').innerText = (avgP3 / 10).toFixed(1) + ' / 10';
+
+      // Pilar 4
+      const p4k1 = parseInt(document.getElementById('slider-p4-kr1').value);
+      const p4k2 = parseInt(document.getElementById('slider-p4-kr2').value);
+      const p4k3 = parseInt(document.getElementById('slider-p4-kr3').value);
+
+      document.getElementById('val-p4-kr1').innerText = p4k1 + '%';
+      document.getElementById('val-p4-kr2').innerText = p4k2 + '%';
+      document.getElementById('val-p4-kr3').innerText = p4k3 + '%';
+
+      const avgP4 = (p4k1 + p4k2 + p4k3) / 3;
+      document.getElementById('score-p4').innerText = (avgP4 / 10).toFixed(1) + ' / 10';
+
+      // Global (4 OKRs)
+      const avgGlobal = (avgP1 + avgP2 + avgP3 + avgP4) / 4;
+      const scoreGlobal = (avgGlobal / 10).toFixed(1);
+
+      document.getElementById('score-global').innerHTML = scoreGlobal + ' <span class="text-sm font-semibold text-slate-400">/ 10</span>';
+      document.getElementById('percent-global').innerText = Math.round(avgGlobal) + '%';
+    }
+  </script>
+</body>
+</html>
